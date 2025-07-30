@@ -13,7 +13,8 @@ const Categories = () => {
           <div key={index} className='group cursor-pointer py-5 px-3 gap-2 rounded-lg flex flex-col justify-center items-center'
           style={{backgroundColor: category.bgColor}}
           onClick={()=>{
-            navigate('/products/${category.path.toLowerCase()}')
+            navigate(`/products/${category.path.toLowerCase()}`)
+
             scrollTo(0, 0)
           }}>
           <img src={category.image} alt={category.text} className='group-hover:scale-108 transition max-w-28'/>
