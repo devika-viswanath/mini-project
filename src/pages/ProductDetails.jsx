@@ -1,28 +1,32 @@
 import { useEffect, useState } from "react";
 import { useAppContext } from "../context/AppContext";
-import { Link, useParams } from "react-router-dom";
+import { Link, useParams, useNavigate } from "react-router-dom";
 import { assets } from "../assets/assets";
 
 const ProductDetails = () => {
 
-    const { products, navigate ,currency,addToCart } = useAppContext();
-    const {id} =useParams();
+    const { products, currency, addToCart } = useAppContext();
+    const navigate = useNavigate();
+    const {id} = useParams();
 
-    const [relatedProducts, setRelatedProducts] =useState([]);
-
-    const [thumbnail, setThumbnail] =useState(null);
+    const [relatedProducts, setRelatedProducts] = useState([]);
+    const [thumbnail, setThumbnail] = useState(null);
+    
     const product = products.find((item) => item._id === id);
+    
     useEffect(() => {
-        if (products.length > 0) {
+        if (products.length > 0 && product) {
             let productsCopy = products.slice();
             productsCopy = productsCopy.filter((item) => product.category === item.category);
-            setRelatedProducts(productsCopy.slice(0,5));
+            setRelatedProducts(productsCopy.slice(0, 5));
         }
-    }, [products]);
+    }, [products, product]);
+    
     useEffect(() => {
-      
-            setThumbnail(product?.images?.[0] || null);
-        
+        // Fixed: Use consistent property name 'image' and set initial thumbnail
+        if (product && product.image && product.image.length > 0) {
+            setThumbnail(product.image[0]);
+        }
     }, [product]);
 
     return product && (
@@ -37,15 +41,30 @@ const ProductDetails = () => {
             <div className="flex flex-col md:flex-row gap-16 mt-4">
                 <div className="flex gap-3">
                     <div className="flex flex-col gap-3">
-                        {product.image.map((image, index) => (
+                        {product.image && product.image.map((image, index) => (
                             <div key={index} onClick={() => setThumbnail(image)} className="border max-w-24 border-gray-500/30 rounded overflow-hidden cursor-pointer" >
-                                <img src={image} alt={`Thumbnail ${index + 1}`} />
+                                <img 
+                                    src={image} 
+                                    alt={`Thumbnail ${index + 1}`}
+                                    onError={(e) => {
+                                        console.log('Thumbnail failed to load:', image);
+                                        e.target.style.display = 'none';
+                                    }}
+                                />
                             </div>
                         ))}
                     </div>
 
                     <div className="border border-gray-500/30 max-w-100 rounded overflow-hidden">
-                        <img src={thumbnail} alt="Selected product" className="w-full h-full object-cover" />
+                        <img 
+                            src={thumbnail} 
+                            alt="Selected product" 
+                            className="w-full h-full object-cover"
+                            onError={(e) => {
+                                console.log('Main image failed to load:', thumbnail);
+                                e.target.src = '/placeholder-image.jpg'; // Add fallback
+                            }}
+                        />
                     </div>
                 </div>
 
