@@ -13,7 +13,7 @@ const Cart = () => {
     const getCartData = () => {
         let tempData = []
         let totalAmount = 0
-        
+
         for (const itemId in cartItems) {
             if (cartItems[itemId] > 0) {
                 const itemInfo = products.find((product) => product._id === itemId)
@@ -50,8 +50,8 @@ const Cart = () => {
                 <img src={assets.cart_icon} alt="Empty cart" className="w-20 h-20 opacity-50 mb-4" />
                 <h2 className="text-2xl font-medium text-gray-600 mb-2">Your cart is empty</h2>
                 <p className="text-gray-500 mb-6">Add some products to get started</p>
-                <button 
-                    onClick={() => navigate('/products')} 
+                <button
+                    onClick={() => navigate('/products')}
                     className="px-6 py-3 bg-indigo-600 text-white rounded-md hover:bg-indigo-700 transition"
                 >
                     Continue Shopping
@@ -84,9 +84,9 @@ const Cart = () => {
                             <div key={item._id} className="grid grid-cols-1 md:grid-cols-4 gap-4 py-4 border-b border-gray-100 items-center">
                                 {/* Product Details */}
                                 <div className="flex items-center gap-4">
-                                    <img 
-                                        src={item.image[0]} 
-                                        alt={item.name} 
+                                    <img
+                                        src={item.image[0]}
+                                        alt={item.name}
                                         className="w-16 h-16 object-cover rounded-md"
                                         onError={(e) => {
                                             e.target.style.display = 'none'
@@ -107,21 +107,21 @@ const Cart = () => {
                                 {/* Action - Quantity Controls */}
                                 <div className="flex items-center justify-center gap-2">
                                     <div className="flex items-center border border-gray-300 rounded">
-                                        <button 
+                                        <button
                                             onClick={() => removeFromCart(item._id)}
                                             className="px-3 py-1 hover:bg-gray-100"
                                         >
                                             -
                                         </button>
                                         <span className="px-3 py-1 border-x border-gray-300">{item.quantity}</span>
-                                        <button 
+                                        <button
                                             onClick={() => addToCart(item._id)}
                                             className="px-3 py-1 hover:bg-gray-100"
                                         >
                                             +
                                         </button>
                                     </div>
-                                    <button 
+                                    <button
                                         onClick={() => updateCartItem(item._id, 0)}
                                         className="text-red-500 hover:text-red-700 p-1"
                                     >
@@ -134,7 +134,7 @@ const Cart = () => {
 
                     {/* Continue Shopping */}
                     <div className="mt-6">
-                        <button 
+                        <button
                             onClick={() => navigate('/products')}
                             className="flex items-center gap-2 text-indigo-600 hover:text-indigo-800 transition"
                         >
@@ -155,7 +155,7 @@ const Cart = () => {
                                 <span className="text-gray-600">
                                     {deliveryAddress || 'No address found'}
                                 </span>
-                                <button 
+                                <button
                                     onClick={() => {
                                         const address = prompt('Enter your delivery address:')
                                         if (address) setDeliveryAddress(address)
@@ -170,7 +170,7 @@ const Cart = () => {
                         {/* Payment Method */}
                         <div className="mb-6">
                             <h3 className="font-medium text-gray-700 mb-2">PAYMENT METHOD</h3>
-                            <select 
+                            <select
                                 value={paymentMethod}
                                 onChange={(e) => setPaymentMethod(e.target.value)}
                                 className="w-full p-2 border border-gray-300 rounded-md focus:ring-2 focus:ring-indigo-500 focus:border-indigo-500"
@@ -206,7 +206,7 @@ const Cart = () => {
                         </div>
 
                         {/* Place Order Button */}
-                        <button 
+                        <button
                             onClick={handlePlaceOrder}
                             className="w-full bg-green-600 hover:bg-green-700 text-white py-3 rounded-md transition font-medium"
                         >
