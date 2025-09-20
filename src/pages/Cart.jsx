@@ -26,7 +26,7 @@ const Cart = () => {
                     totalAmount += itemInfo.offerPrice * cartItems[itemId]
                 }
             }
-        }
+        }e
         return { tempData, totalAmount }
     }
 
