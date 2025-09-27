@@ -11,7 +11,7 @@ export const addAddress = async (req, res) => {
       return res.status(400).json({ success: false, msg: "Invalid or missing userId" });
     }
 
-    // Convert userId string to ObjectId
+    // Convert userId string to Objectid
     const addressToSave = {
       ...address,
       userId: new mongoose.Types.ObjectId(address.userId),
