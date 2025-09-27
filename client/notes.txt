@@ -1,0 +1,5 @@
+prebuilt ui 
+
+mt-16  for sections  for more mt-24 mt-6
+
+just set two colors primary and primary dull or secondary(same shade but dark)

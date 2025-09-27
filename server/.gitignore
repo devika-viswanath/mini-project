@@ -1,0 +1,95 @@
+# Dependencies
+node_modules/
+**/node_modules/
+.pnpm-store/
+.npm/
+.yarn/
+.pnp/
+.pnp.js
+
+# Environment variables (CRITICAL - prevent secrets leak)
+.env
+.env.*
+!.env.example
+!.env.template
+!.env.sample
+
+# Production builds
+build/
+dist/
+out/
+target/
+**/build/
+**/dist/
+**/target/
+.next/
+.nuxt/
+.output/
+.vercel/
+.turbo/
+
+# Package manager files
+package-lock.json
+yarn.lock
+pnpm-lock.yaml
+npm-debug.log*
+yarn-debug.log*
+pnpm-debug.log*
+
+# IDE & OS
+.vscode/
+.idea/
+*.swp
+*.swo
+*~
+.DS_Store
+.DS_Store?
+._*
+.Spotlight-V100
+.Trashes
+ehthumbs.db
+Thumbs.db
+
+# Logs
+logs/
+*.log
+.coverage
+coverage/
+*.lcov
+.nyc_output/
+
+# Solana & Rust specific
+.anchor/
+.keypairs/
+test-ledger/
+.solana/
+*-keypair.json
+**/*.rs.bk
+Cargo.lock
+
+# Smart contracts & Foundry
+cache/
+lib/
+broadcast/
+**/cache/
+
+# Database
+*.db
+*.sqlite
+*.sqlite3
+
+# Testing
+.pytest_cache/
+.tox/
+.coverage.*
+htmlcov/
+.hypothesis/
+
+# Temporary
+tmp/
+temp/
+.tmp/
+.temp/
+.eslintcache
+*.tsbuildinfo
+.swc/

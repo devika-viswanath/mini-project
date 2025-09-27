@@ -1,0 +1,16 @@
+create a project -> create cluster -> free ok -> nodejs option to mongoose -> dbuser -> dbuser123 -> copy string till .net
+-> network access -> allow access from anywhere 00000.0 -> use "" -> create a db.js config -> create a connectDB function 
+-> after URI add /dbName -> export it -> include db.js
+
+make the type to "module"
+
+router? cookie?
+
+setup server.js
+1.schema in models 
+2. controller for logic
+(create middleware add to routes)
+3. router for  routes
+4.import in server.js
+
+openssl rand -base64 64
